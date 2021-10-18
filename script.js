@@ -1,23 +1,25 @@
 const canvas = document.querySelector(".canvas");
+const slider = document.querySelector(".slider");
+const numPixelsText = document.querySelector(".num-of-pixels");
+const clearButton = document.querySelector(".clear");
+
 let canvasHeight = canvas.clientHeight;
 let canvasWidth = canvas.clientWidth;
 let canvasPixels = [];
 
-const slider = document.querySelector(".slider");
-const numPixelsText = document.querySelector(".num-of-pixels");
-
 let numPixels = slider.value;
 numPixelsText.textContent = slider.value;
 
-slider.oninput = () => {
-    numPixels = slider.value;
-    numPixelsText.textContent = slider.value;
+generatePixels();
+
+slider.oninput = () => numPixelsText.textContent = slider.value;
+slider.onchange = () => {
     removePixels();
+    numPixels = slider.value;
     generatePixels();
 };
 
-generatePixels();
-
+clearButton.onclick = clearCanvas;
 
 function generatePixels() {
     for (let i = 0; i < numPixels; i++) {
@@ -42,8 +44,15 @@ function removePixels() {
     for (let i = 0; i < numPixels; i++) {
         for (let j = 0; j < numPixels; j++) {
             canvas.removeChild(canvasPixels[i][j]);
-            canvasPixels[i].pop();
         }
-        canvasPixels.pop();
+    }
+    canvasPixels = [];
+}
+
+function clearCanvas() {
+    for (let i = 0; i < numPixels; i++) {
+        for (let j = 0; j < numPixels; j++) {
+            canvasPixels[i][j].style.backgroundColor = "white";
+        }
     }
 }

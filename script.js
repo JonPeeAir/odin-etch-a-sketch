@@ -1,25 +1,49 @@
 const canvas = document.querySelector(".canvas");
 let canvasHeight = canvas.clientHeight;
 let canvasWidth = canvas.clientWidth;
-
-let numPixels = 16;
 let canvasPixels = [];
 
-console.log(canvas.style.width);
+const slider = document.querySelector(".slider");
+const numPixelsText = document.querySelector(".num-of-pixels");
 
-for (let i = 0; i < numPixels; i++) {
-    canvasPixels.push([]);
+let numPixels = slider.value;
+numPixelsText.textContent = slider.value;
 
-    for (let j = 0; j < numPixels; j++) {
-        let canvasPixel = document.createElement("div");
-        canvasPixel.setAttribute("class", "pixel");
-        canvasPixel.style.height = `${canvasHeight / numPixels}px`;
-        canvasPixel.style.width = `${canvasWidth / numPixels}px`;
-        canvasPixel.addEventListener('mouseenter', () => {
-            canvasPixel.style.backgroundColor = "black";
-        });
+slider.oninput = () => {
+    numPixels = slider.value;
+    numPixelsText.textContent = slider.value;
+    removePixels();
+    generatePixels();
+};
 
-        canvasPixels[i].push(canvasPixel);
-        canvas.appendChild(canvasPixels[i][j]);
+generatePixels();
+
+
+function generatePixels() {
+    for (let i = 0; i < numPixels; i++) {
+        canvasPixels.push([]);
+
+        for (let j = 0; j < numPixels; j++) {
+            let canvasPixel = document.createElement("div");
+            canvasPixel.setAttribute("class", "pixel");
+            canvasPixel.style.height = `${canvasHeight / numPixels}px`;
+            canvasPixel.style.width = `${canvasWidth / numPixels}px`;
+            canvasPixel.addEventListener('mouseenter', () => {
+                canvasPixel.style.backgroundColor = "black";
+            });
+
+            canvasPixels[i].push(canvasPixel);
+            canvas.appendChild(canvasPixels[i][j]);
+        }
+    }
+}
+
+function removePixels() {
+    for (let i = 0; i < numPixels; i++) {
+        for (let j = 0; j < numPixels; j++) {
+            canvas.removeChild(canvasPixels[i][j]);
+            canvasPixels[i].pop();
+        }
+        canvasPixels.pop();
     }
 }

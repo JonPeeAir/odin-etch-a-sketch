@@ -1,16 +1,33 @@
-html {
+* {
     box-sizing: border-box;
-}
-
-*, *::before, *::after {
-    box-sizing: inherit;
     padding: 0;
     margin: 0;
 } 
 
-.canvas .pixel {
-    width: 50px;
-    height: 50px;
-    background-color: blue;
-    margin: 1rem;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10rem;
+}
+
+.canvas {
+    box-sizing: content-box;
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 500px;
+}
+
+/* .canvas .pixel {
+    width: 18.75px;
+    height: 18.75px;
+} */
+
+.canvas .pixel:hover {
+    background-color: red;
 }

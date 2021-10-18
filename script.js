@@ -1,6 +1,9 @@
 const canvas = document.querySelector(".canvas");
 const slider = document.querySelector(".slider");
 const numPixelsText = document.querySelector(".num-of-pixels");
+const normalButton = document.querySelector(".normal");
+const randomButton = document.querySelector(".random");
+const eraseButton = document.querySelector(".eraser");
 const clearButton = document.querySelector(".clear");
 
 let canvasHeight = canvas.clientHeight;
@@ -19,6 +22,9 @@ slider.onchange = () => {
     generatePixels();
 };
 
+normalButton.onclick = normalMode;
+randomButton.onclick = randomMode;
+eraseButton.onclick = eraseMode;
 clearButton.onclick = clearCanvas;
 
 function generatePixels() {
@@ -47,6 +53,37 @@ function removePixels() {
         }
     }
     canvasPixels = [];
+}
+
+function normalMode() {
+    for (let i = 0; i < numPixels; i++) {
+        for (let j = 0; j < numPixels; j++) {
+
+            canvasPixels[i][j].addEventListener('mouseenter', () => {
+                canvasPixels[i][j].style.backgroundColor = "black";
+            });
+        }
+    }
+}
+
+function randomMode() {
+    for (let i = 0; i < numPixels; i++) {
+        for (let j = 0; j < numPixels; j++) {
+            canvasPixels[i][j].addEventListener('mouseenter', () => {
+                canvasPixels[i][j].style.backgroundColor = `#${Math.round(Math.random() * (0xffffff + 1)).toString(16)}`;
+            });
+        }
+    }
+}
+
+function eraseMode() {
+    for (let i = 0; i < numPixels; i++) {
+        for (let j = 0; j < numPixels; j++) {
+            canvasPixels[i][j].addEventListener('mouseenter', () => {
+                canvasPixels[i][j].style.backgroundColor = "white";
+            });
+        }
+    }
 }
 
 function clearCanvas() {

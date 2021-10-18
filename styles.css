@@ -9,7 +9,6 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 10rem;
 }
 
 .canvas {
@@ -22,11 +21,6 @@ body {
     width: 500px;
     height: 500px;
 }
-
-/* .canvas .pixel {
-    width: 18.75px;
-    height: 18.75px;
-} */
 
 .canvas .pixel:hover {
     background-color: red;

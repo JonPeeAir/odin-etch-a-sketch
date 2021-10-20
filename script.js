@@ -9,8 +9,13 @@ let canvasHeight = canvas.clientHeight;
 let canvasWidth = canvas.clientWidth;
 
 console.log(canvas);
-console.log(canvasHeight);
-console.log(canvasWidth);
+console.log(canvas.clientHeight);
+console.log(canvas.clientWidth);
+console.log(canvas.scrollHeight);
+console.log(canvas.scrollWidth);
+console.log(canvas.offsetHeight);
+console.log(canvas.offsetWidth);
+
 
 let numPixels = slider.value;
 numPixelsText.textContent = slider.value;
@@ -43,8 +48,6 @@ function generatePixels() {
     for (let i = 0; i < numPixels**2; i++) {
         let pixelHeight = canvasHeight / numPixels;
         let pixelWidth = canvasWidth / numPixels;
-        console.log("pixelHeight: " + pixelHeight);
-        console.log("pixelWidth: " + pixelWidth);
         let canvasPixel = document.createElement("div");
         canvasPixel.setAttribute("class", "pixel");
         canvasPixel.setAttribute("style", `height: ${pixelHeight}px; width: ${pixelWidth}px;`);

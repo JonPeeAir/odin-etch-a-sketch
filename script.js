@@ -8,8 +8,14 @@ const clearButton = document.querySelector(".clear");
 let canvasHeight = canvas.clientHeight;
 let canvasWidth = canvas.clientWidth;
 
+console.log(canvas);
+console.log(canvasHeight);
+console.log(canvasWidth);
+
 let numPixels = slider.value;
 numPixelsText.textContent = slider.value;
+
+console.log(numPixels);
 
 generatePixels();
 normalMode();

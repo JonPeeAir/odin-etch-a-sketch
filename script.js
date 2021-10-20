@@ -39,8 +39,7 @@ function generatePixels() {
         let pixelWidth = canvasWidth / numPixels;
         let canvasPixel = document.createElement("div");
         canvasPixel.setAttribute("class", "pixel");
-        canvasPixel.setAttribute("height", `${pixelHeight}px`);
-        canvasPixel.setAttribute("width", `${pixelWidth}px`);
+        canvasPixel.setAttribute("style", `height: ${pixelHeight}px; width: ${pixelWidth}px;`);
         canvas.appendChild(canvasPixel);
     }
 }

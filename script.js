@@ -26,6 +26,13 @@ modeButton.onclick = toggleMode;
 eraseButton.onclick = eraseMode;
 clearButton.onclick = clearCanvas;
 
+window.onresize = () => {
+    removePixels();
+    canvasHeight = canvas.clientHeight;
+    canvasWidth = canvas.clientWidth;
+    generatePixels();
+}
+
 function generatePixels() {
     for (let i = 0; i < numPixels; i++) {
         canvasPixels.push([]);

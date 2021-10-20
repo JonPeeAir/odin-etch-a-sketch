@@ -37,7 +37,7 @@ function generatePixels() {
             canvasPixel.style.height = `${canvasHeight / numPixels}px`;
             canvasPixel.style.width = `${canvasWidth / numPixels}px`;
             canvasPixel.addEventListener('mouseenter', () => {
-                canvasPixel.style.backgroundColor = "black";
+                canvasPixel.style.backgroundColor = "rgb(0, 0, 0, 0.7)";
             });
 
             canvasPixels[i].push(canvasPixel);
@@ -60,7 +60,7 @@ function normalMode() {
         for (let j = 0; j < numPixels; j++) {
 
             canvasPixels[i][j].addEventListener('mouseenter', () => {
-                canvasPixels[i][j].style.backgroundColor = "black";
+                canvasPixels[i][j].style.backgroundColor = "rgb(0, 0, 0, 0.7)";
             });
         }
     }
@@ -70,7 +70,7 @@ function randomMode() {
     for (let i = 0; i < numPixels; i++) {
         for (let j = 0; j < numPixels; j++) {
             canvasPixels[i][j].addEventListener('mouseenter', () => {
-                canvasPixels[i][j].style.backgroundColor = `#${Math.round(Math.random() * (0xffffff + 1)).toString(16)}`;
+                canvasPixels[i][j].style.backgroundColor = `#${Math.round(Math.random() * (0xffffff + 1)).toString(16)}80`;
             });
         }
     }
@@ -80,7 +80,7 @@ function eraseMode() {
     for (let i = 0; i < numPixels; i++) {
         for (let j = 0; j < numPixels; j++) {
             canvasPixels[i][j].addEventListener('mouseenter', () => {
-                canvasPixels[i][j].style.backgroundColor = "white";
+                canvasPixels[i][j].style.backgroundColor = "rgb(0,0,0,0)";
             });
         }
     }
@@ -89,7 +89,7 @@ function eraseMode() {
 function clearCanvas() {
     for (let i = 0; i < numPixels; i++) {
         for (let j = 0; j < numPixels; j++) {
-            canvasPixels[i][j].style.backgroundColor = "white";
+            canvasPixels[i][j].style.backgroundColor = "rgb(0,0,0,0)";
         }
     }
 }

@@ -13,6 +13,7 @@ let numPixels = slider.value;
 numPixelsText.textContent = slider.value;
 
 generatePixels();
+normalMode();
 
 slider.oninput = () => numPixelsText.textContent = slider.value;
 slider.onchange = () => {
@@ -36,15 +37,11 @@ window.onresize = () => {
 function generatePixels() {
     for (let i = 0; i < numPixels; i++) {
         canvasPixels.push([]);
-
         for (let j = 0; j < numPixels; j++) {
             let canvasPixel = document.createElement("div");
             canvasPixel.setAttribute("class", "pixel");
             canvasPixel.style.height = `${canvasHeight / numPixels}px`;
             canvasPixel.style.width = `${canvasWidth / numPixels}px`;
-            canvasPixel.addEventListener('mouseenter', () => {
-                canvasPixel.style.backgroundColor = "rgb(0, 0, 0, 0.7)";
-            });
 
             canvasPixels[i].push(canvasPixel);
             canvas.appendChild(canvasPixels[i][j]);

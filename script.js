@@ -11,6 +11,8 @@ let canvasWidth = canvas.clientWidth;
 let numPixels = slider.value;
 numPixelsText.textContent = slider.value;
 
+generatePixels();
+
 slider.oninput = () => numPixelsText.textContent = slider.value;
 slider.onchange = () => {
     removePixels();
@@ -20,7 +22,7 @@ slider.onchange = () => {
 
 let mode = "normal";
 modeButton.onclick = toggleMode;
-eraseButton.onclick = eraseMode;
+eraseButton.onclick = setEraseMode;
 clearButton.onclick = clearCanvas;
 
 window.onresize = () => {
@@ -32,13 +34,13 @@ window.onresize = () => {
 
 function generatePixels() {
     for (let i = 0; i < numPixels**2; i++) {
-        let pixelHeight = canvasHeight / numPixels;
-        let pixelWidth = canvasWidth / numPixels;
         let canvasPixel = document.createElement("div");
         canvasPixel.setAttribute("class", "pixel");
-        canvasPixel.setAttribute("style", `height: ${pixelHeight}px; width: ${pixelWidth}px;`);
+        canvasPixel.style.height = `${canvasHeight / numPixels}px`;
+        canvasPixel.style.width= `${canvasWidth / numPixels}px`;
         canvas.appendChild(canvasPixel);
     }
+    setNormalMode();
 }
 
 function removePixels() {
@@ -47,21 +49,21 @@ function removePixels() {
     }
 }
 
-function toggleMode() {
+function setToggleMode() {
     if (mode === "normal") {
         mode = "random";
         modeButton.textContent = "Random";
-        randomMode();
+        setRandomMode();
     } else if (mode === "random") {
         mode = "normal";
         modeButton.textContent = "Normal";
-        normalMode();
+        setNormalMode();
     } else {
         alert("error detecting mode");
     }
 }
 
-function normalMode() {
+function setNormalMode() {
     canvas.addEventListener('mouseover', (e) => {
         if (e.target.className === "pixel") {
             e.target.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
@@ -69,7 +71,7 @@ function normalMode() {
     });
 }
 
-function randomMode() {
+function setRandomMode() {
     canvas.addEventListener('mouseover', (e) => {
         if (e.target.className === "pixel") {
             e.target.style.backgroundColor = `#${Math.round(Math.random() * (0xffffff + 1)).toString(16)}80`;
@@ -77,7 +79,7 @@ function randomMode() {
     });
 }
 
-function eraseMode() {
+function setEraseMode() {
     canvas.addEventListener('mouseover', (e) => {
         if (e.target.className === "pixel") {
             e.target.style.backgroundColor = "rgba(0, 0, 0, 0)";
@@ -91,16 +93,3 @@ function clearCanvas() {
     }
 }
 
-console.log(canvas);
-console.log(getComputedStyle(canvas).getPropertyValue('height'));
-console.log(getComputedStyle(canvas).getPropertyValue('width'));
-console.log(canvas.clientHeight);
-console.log(canvas.clientWidth);
-console.log(canvas.scrollHeight);
-console.log(canvas.scrollWidth);
-console.log(canvas.offsetHeight);
-console.log(canvas.offsetWidth);
-console.log(numPixels);
-
-generatePixels();
-normalMode();

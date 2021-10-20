@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Schoolbell&display=swap');
+
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: 'Schoolbell', cursive;
 } 
 
 body {
@@ -9,13 +12,31 @@ body {
     width: 100vw;
 
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
 
     background: #DC2626;
     mix-blend-mode: normal;
     box-shadow: inset 0px 4px 75px 25px rgba(0, 0, 0, 0.25);
+
+    border: 1px solid black;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: normal;
+    color: #FFF616;
+
+    mix-blend-mode: normal;
+    text-shadow: 0px 4px 50px #840000;
 }
 
 .canvas {
@@ -33,4 +54,28 @@ body {
     border-radius: 25px;
 
     overflow: hidden;
+}
+
+
+
+footer {
+    font-size: 1.5rem;
+    width: inherit;
+    height: 60px;
+    background-color: #C4C4C4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer > p {
+    flex: 1;
+    text-align: center;
+}
+
+footer > a {
+    position: absolute;
+    right: 1rem;
+    display: flex;
+    align-items: center;
 }

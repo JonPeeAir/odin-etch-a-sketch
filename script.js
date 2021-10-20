@@ -8,24 +8,8 @@ const clearButton = document.querySelector(".clear");
 let canvasHeight = canvas.clientHeight;
 let canvasWidth = canvas.clientWidth;
 
-console.log(canvas);
-console.log(getComputedStyle(canvas).getPropertyValue('height'));
-console.log(getComputedStyle(canvas).getPropertyValue('width'));
-console.log(canvas.clientHeight);
-console.log(canvas.clientWidth);
-console.log(canvas.scrollHeight);
-console.log(canvas.scrollWidth);
-console.log(canvas.offsetHeight);
-console.log(canvas.offsetWidth);
-
-
 let numPixels = slider.value;
 numPixelsText.textContent = slider.value;
-
-console.log(numPixels);
-
-generatePixels();
-normalMode();
 
 slider.oninput = () => numPixelsText.textContent = slider.value;
 slider.onchange = () => {
@@ -106,3 +90,17 @@ function clearCanvas() {
         canvas.childNodes[i].style.backgroundColor = "rgba(0, 0, 0, 0)";
     }
 }
+
+console.log(canvas);
+console.log(getComputedStyle(canvas).getPropertyValue('height'));
+console.log(getComputedStyle(canvas).getPropertyValue('width'));
+console.log(canvas.clientHeight);
+console.log(canvas.clientWidth);
+console.log(canvas.scrollHeight);
+console.log(canvas.scrollWidth);
+console.log(canvas.offsetHeight);
+console.log(canvas.offsetWidth);
+console.log(numPixels);
+
+generatePixels();
+normalMode();

@@ -43,13 +43,8 @@ function generatePixels() {
     setNormalMode();
 }
 
-function removePixels() {
-    for (let i = 0; i < numPixels**2; i++) {
-        canvas.removeChild(canvas.lastChild);
-    }
-}
 
-function setToggleMode() {
+function toggleMode() {
     if (mode === "normal") {
         mode = "random";
         modeButton.textContent = "Random";
@@ -90,6 +85,12 @@ function setEraseMode() {
 function clearCanvas() {
     for (let i = 0; i < canvas.childElementCount; i++) {
         canvas.childNodes[i].style.backgroundColor = "rgba(0, 0, 0, 0)";
+    }
+}
+
+function removePixels() {
+    for (let i = 0; i < numPixels**2; i++) {
+        canvas.removeChild(canvas.lastChild);
     }
 }
 

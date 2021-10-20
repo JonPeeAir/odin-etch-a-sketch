@@ -47,7 +47,6 @@ function removePixels() {
     for (let i = 0; i < numPixels**2; i++) {
         canvas.removeChild(canvas.lastChild);
     }
-    canvasPixels = [];
 }
 
 function toggleMode() {
@@ -66,21 +65,18 @@ function toggleMode() {
 
 function normalMode() {
     canvas.addEventListener('mouseover', (e) => {
-        console.log(e.target);
         e.target.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
     });
 }
 
 function randomMode() {
     canvas.addEventListener('mouseover', (e) => {
-        console.log(e.target);
         e.target.style.backgroundColor = `#${Math.round(Math.random() * (0xffffff + 1)).toString(16)}80`;
     });
 }
 
 function eraseMode() {
     canvas.addEventListener('mouseover', (e) => {
-        console.log(e.target);
         e.target.style.backgroundColor = "rgba(0, 0, 0, 0)";
     });
 }

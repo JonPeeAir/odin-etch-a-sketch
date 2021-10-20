@@ -65,6 +65,7 @@ function toggleMode() {
 
 function normalMode() {
     canvas.addEventListener('mouseover', (e) => {
+        console.log(e.target);
         e.target.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
     });
 }

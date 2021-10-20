@@ -35,12 +35,12 @@ window.onresize = () => {
 
 function generatePixels() {
     for (let i = 0; i < numPixels**2; i++) {
-        let canvasPixel = document.createElement("div");
-        canvasPixel.setAttribute("class", "pixel");
         let pixelHeight = canvasHeight / numPixels;
         let pixelWidth = canvasWidth / numPixels;
-        canvasPixel.style.height = `${pixelHeight}px`;
-        canvasPixel.style.width = `${pixelWidth}px`;
+        let canvasPixel = document.createElement("div");
+        canvasPixel.setAttribute("class", "pixel");
+        canvasPixel.setAttribute("height", `${pixelHeight}px`);
+        canvasPixel.setAttribute("width", `${pixelWidth}px`);
         canvas.appendChild(canvasPixel);
     }
 }

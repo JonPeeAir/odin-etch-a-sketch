@@ -9,6 +9,8 @@ let canvasHeight = canvas.clientHeight;
 let canvasWidth = canvas.clientWidth;
 
 console.log(canvas);
+console.log(getComputedStyle(canvas).getPropertyValue('height'));
+console.log(getComputedStyle(canvas).getPropertyValue('width'));
 console.log(canvas.clientHeight);
 console.log(canvas.clientWidth);
 console.log(canvas.scrollHeight);

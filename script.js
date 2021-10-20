@@ -1,8 +1,7 @@
 const canvas = document.querySelector(".canvas");
 const slider = document.querySelector(".slider");
 const numPixelsText = document.querySelector(".num-of-pixels");
-const normalButton = document.querySelector(".normal");
-const randomButton = document.querySelector(".random");
+const modeButton = document.querySelector(".toggle-mode");
 const eraseButton = document.querySelector(".eraser");
 const clearButton = document.querySelector(".clear");
 
@@ -22,8 +21,8 @@ slider.onchange = () => {
     generatePixels();
 };
 
-normalButton.onclick = normalMode;
-randomButton.onclick = randomMode;
+let mode = "normal";
+modeButton.onclick = toggleMode;
 eraseButton.onclick = eraseMode;
 clearButton.onclick = clearCanvas;
 
@@ -55,10 +54,23 @@ function removePixels() {
     canvasPixels = [];
 }
 
+function toggleMode() {
+    if (mode === "normal") {
+        mode = "random";
+        modeButton.textContent = "Random";
+        randomMode();
+    } else if (mode === "random") {
+        mode = "normal";
+        modeButton.textContent = "Normal";
+        normalMode();
+    } else {
+        alert("error detecting mode");
+    }
+}
+
 function normalMode() {
     for (let i = 0; i < numPixels; i++) {
         for (let j = 0; j < numPixels; j++) {
-
             canvasPixels[i][j].addEventListener('mouseenter', () => {
                 canvasPixels[i][j].style.backgroundColor = "rgb(0, 0, 0, 0.7)";
             });

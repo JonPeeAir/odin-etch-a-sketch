@@ -65,20 +65,25 @@ function toggleMode() {
 
 function normalMode() {
     canvas.addEventListener('mouseover', (e) => {
-        console.log(e.target);
-        e.target.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+        if (e.target.className === "pixel") {
+            e.target.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+        }
     });
 }
 
 function randomMode() {
     canvas.addEventListener('mouseover', (e) => {
-        e.target.style.backgroundColor = `#${Math.round(Math.random() * (0xffffff + 1)).toString(16)}80`;
+        if (e.target.className === "pixel") {
+            e.target.style.backgroundColor = `#${Math.round(Math.random() * (0xffffff + 1)).toString(16)}80`;
+        }
     });
 }
 
 function eraseMode() {
     canvas.addEventListener('mouseover', (e) => {
-        e.target.style.backgroundColor = "rgba(0, 0, 0, 0)";
+        if (e.target.className === "pixel") {
+            e.target.style.backgroundColor = "rgba(0, 0, 0, 0)";
+        }
     });
 }
 
